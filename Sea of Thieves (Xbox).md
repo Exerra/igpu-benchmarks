@@ -2,6 +2,11 @@
 title: Sea of Thieves
 platform: Xbox
 icon: https://cdn.exerra.xyz/png/games/Sea%20of%20Thieves/steam_icon_256x256.png
+playableStatus: playable
+screenshots:
+- "https://www.mobigyaan.com/wp-content/uploads/2020/08/Xiaomi-Mi-Notebook-14-Review-Performance-Benchmarks-Gaming-19.jpg"
+- "https://abload.de/img/theskelligeislesypj5k.jpg"
+- "https://cdn.mos.cms.futurecdn.net/Pj2KVuACbxTmonwk34VGoe.jpg"
 ---
 
 # Brief

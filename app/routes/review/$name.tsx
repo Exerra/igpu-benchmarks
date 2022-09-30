@@ -5,12 +5,16 @@ import matter from "gray-matter"
 import Markdown from "markdown-to-jsx";
 import fm from "front-matter"
 import React from "react";
+import { mdConfig } from "~/routes/modules/components/markdown";
+import Zoom from "react-medium-image-zoom"
 
 interface Review {
 	attributes: {
 		title: string,
 		platform: "Steam" | "Xbox" | "Epic" | "EA" | "Uplay",
-		icon: string
+		icon: string,
+		playableStatus: "runs-great" | "playable" | "unplayable",
+		screenshots: string[]
 	},
 	body: string,
 	bodyBegin: number,
@@ -26,59 +30,33 @@ export const loader: LoaderFunction = async ({ params }) => {
 	return fm(md)
 }
 
-class EmptyImg extends React.Component {
-	render() {
-		return <></>
-	}
-}
-
-class H1 extends React.Component<any, any> {
-	render() {
-		return (
-			<>
-				<h1 className={"text-5xl mt-10 font-bold mb-2"}>{this.props.children}</h1>
-			</>
-		)
-	}
-}
-
-class H2 extends React.Component<any, any> {
-	render() {
-		return (
-			<h2 className={"text-4xl font-bold mt-7 text-gray-800"}>{this.props.children}</h2>
-		)
-	}
-}
-
-class H3 extends React.Component<any, any> {
-	render() {
-		return (
-			<h3 className={"text-2xl font-bold mt-7 text-gray-700"}>{this.props.children}</h3>
-		)
-	}
-}
-
-let emptyComponentConf = {
-	component: EmptyImg
-}
-
-let mdConfig = {
-	disableParsingRawHTML: false,
-	overrides: {
-		script: emptyComponentConf,
-		button: emptyComponentConf,
-		form: emptyComponentConf,
-		input: emptyComponentConf,
-		h1: { component: H1 },
-		h2: { component: H2 },
-		h3: { component: H3 }
-	}
-}
-
 export default function Index() {
 	let data: Review = useLoaderData()
 
-	console.log( data )
+	let playableStatus = {
+		icon: "",
+		text: "",
+		colour: ""
+	}
+
+	switch (data.attributes.playableStatus) {
+		case "runs-great":
+			playableStatus.icon = "fa-solid fa-circle-check"
+			playableStatus.text = "Runs great!"
+			playableStatus.colour = "text-green-500"
+			break;
+		case "playable":
+			playableStatus.icon = "fa-solid fa-face-meh"
+			playableStatus.text = "Playable"
+			playableStatus.colour = "text-orange-400"
+			break;
+		case "unplayable":
+			playableStatus.icon = "fa-solid fa-circle-xmark"
+			playableStatus.text = "Unplayable"
+			playableStatus.colour = "text-red-400"
+	}
+
+	console.log( data.attributes )
 	return (
 		<div>
 			<div className={"mx-3 mb-5"}>
@@ -103,10 +81,35 @@ export default function Index() {
 					</div>
 				</div>
 
-				<main className={"mt-10"} style={{ lineHeight: "2" }}>
-					<Markdown options={mdConfig}>{data.body}</Markdown>
+				<main className={""} style={{ lineHeight: "2" }}>
+					<section>
+						<h1 className={"text-5xl mt-10 mb-5"}>Quick info</h1>
+						<div className={"p-10 shadow-2xl rounded-2xl"}>
+							<p className={`${playableStatus.colour} text-2xl`}><i className={playableStatus.icon}></i> {playableStatus.text}</p>
+						</div>
+					</section>
+
+					<section>
+						<h1 className={"text-5xl mt-10 mb-5"}>Review</h1>
+						<div className={"p-10 shadow-2xl rounded-2xl"}>
+							<Markdown options={mdConfig}>{data.body}</Markdown>
+						</div>
+					</section>
+
+					<section>
+						<h1 className={"text-5xl mt-10 mb-5"}>Screenshots</h1>
+						<div className={"p-10 shadow-2xl rounded-2xl flex flex-wrap gap-6 justify-center"}>
+							{data.attributes.screenshots.map(screenshot => (
+								<Zoom><div key={`loaded ${screenshot}`} style={{ /*width: "24rem",*/ aspectRatio: "auto 16 / 9", backgroundImage: `url('${screenshot}')` }} className={"w-80 md:w-96 shadow-2xl rounded-lg overflow-hidden bg-cover basis-1/3"} /></Zoom>
+							))}
+						</div>
+					</section>
 				</main>
 			</div>
 		</div>
 	);
 }
+
+/*
+<Zoom><div key={`loaded ${screenshot.id}`} style={{ width: "24rem", aspectRatio: "auto 16 / 9", backgroundImage: `url('${screenshot.image}')` }} className={"max-w-sm shadow-2xl rounded-lg overflow-hidden bg-cover"} /></Zoom>
+ */

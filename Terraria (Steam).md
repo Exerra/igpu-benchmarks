@@ -2,6 +2,11 @@
 title: Terraria
 platform: Steam
 icon: https://cdn.exerra.xyz/png/games/Terraria/steam_icon_512x512.png
+playableStatus: runs-great
+screenshots: 
+    - "https://www.mobigyaan.com/wp-content/uploads/2020/08/Xiaomi-Mi-Notebook-14-Review-Performance-Benchmarks-Gaming-19.jpg"
+    - "https://abload.de/img/theskelligeislesypj5k.jpg"
+    - "https://cdn.mos.cms.futurecdn.net/Pj2KVuACbxTmonwk34VGoe.jpg"
 ---
 
 # Brief

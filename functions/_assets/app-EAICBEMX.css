@@ -614,26 +614,6 @@ video {
   width: auto;
 }
 
-.w-14 {
-  width: 3.5rem;
-}
-
-.w-52 {
-  width: 13rem;
-}
-
-.w-96 {
-  width: 24rem;
-}
-
-.w-60 {
-  width: 15rem;
-}
-
-.w-80 {
-  width: 20rem;
-}
-
 .max-w-xl {
   max-width: 36rem;
 }
@@ -784,10 +764,6 @@ video {
 
 .text-center {
   text-align: center;
-}
-
-.align-middle {
-  vertical-align: middle;
 }
 
 .text-xl {
@@ -944,10 +920,6 @@ video {
 
   .md\:w-full {
     width: 100%;
-  }
-
-  .md\:w-96 {
-    width: 24rem;
   }
 
   .md\:max-w-lg {
