@@ -65,10 +65,10 @@ export default function Index() {
 
 				<div className={"container justify-between items-center mx-auto w-full h-screen"}>
 					<div className={"justify-center md:justify-start my-36 md:my-36 content-center"}>
-						<h1 className={"font-bold text-7xl lg:text-9xl text-center md:text-left text-black"}><span className={"text-gray-700"}>Exerra</span> Benchmarks<span className={"text-gray-700"}>.</span></h1><br/>
+						<h1 className={"font-bold text-6xl lg:text-9xl text-center md:text-left text-black"}><span className={"text-gray-700"}>Exerra</span> Benchmarks<span className={"text-gray-700"}>.</span></h1><br/>
 						<h3 className={"font-bold text-2xl lg:text-3xl text-center mx-3 md:text-left"}>Integrated GPU benchmarks</h3><br/><br/><br/>
 
-						<div className={"my-10 inline"}>
+						<div className={"mx-3 block"}>
 							<ReactSearchBox placeholder={"Search a review here"} data={searchParse} onSelect={(record) => {
 								console.log(record)
 								window.location.href = `/review/${record.item.value}`
@@ -86,7 +86,7 @@ export default function Index() {
 
 			</div>
 
-			<div className={"container w-auto justify-center lg:justify-between items-center mx-3 md:scale-100 md:mx-auto md:w-full bg-gray-100 px-10 py-10 flex rounded-2xl bg-cover bg-center flex-wrap"} style={{ backgroundImage: 'url("https://cdn.exerra.xyz/svg/iridescent/bg-iridescent-rightside.svg")' }} id={"learn-more"}>
+			{/*<div className={"container w-auto justify-center lg:justify-between items-center mx-3 md:scale-100 md:mx-auto md:w-full bg-gray-100 px-10 py-10 flex rounded-2xl bg-cover bg-center flex-wrap"} style={{ backgroundImage: 'url("https://cdn.exerra.xyz/svg/iridescent/bg-iridescent-rightside.svg")' }} id={"learn-more"}>
 				<div className={"md:max-w-lg"}>
 					<h1 className={"text-4xl md:text-6xl"}>One system fits all</h1><br/>
 					<p>
@@ -99,7 +99,7 @@ export default function Index() {
 					<img src={"https://cdn.exerra.xyz/svg/charts/services/identity/services-using-identity-october-2022.svg"} />
 					<sub>Data for October 2022</sub>
 				</div>
-			</div>
+			</div>*/}
 		</div>
 	);
 }

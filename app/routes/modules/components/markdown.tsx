@@ -6,7 +6,7 @@ class H1 extends React.Component<any, any> {
 			<>
 				<div className={"mt-10 mb-2"}>
 					<h1 className={"text-4xl md:text-5xl font-bold mb-5"}>{this.props.children}</h1>
-					<hr className={"border-2 h-1 rounded"} />
+					<hr />
 				</div>
 			</>
 		)

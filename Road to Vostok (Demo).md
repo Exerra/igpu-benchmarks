@@ -1,7 +1,7 @@
 ---
 title: Road to Vostok (Demo)
 platform: Steam
-icon: https://cdn.exerra.xyz/png/games/Terraria/steam_icon_512x512.png
+icon: https://roadtovostok.com/wp-content/uploads/2022/02/cropped-Road_to_Vostok_Icon-180x180.png
 playableStatus: unplayable
 appid: 2141300
 warning: This game is an early build. As development progresses certain stuff may change.
