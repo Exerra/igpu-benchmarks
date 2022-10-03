@@ -4,7 +4,10 @@ class H1 extends React.Component<any, any> {
 	render() {
 		return (
 			<>
-				<h1 className={"text-5xl mt-10 font-bold mb-2"}>{this.props.children}</h1>
+				<div className={"mt-10 mb-2"}>
+					<h1 className={"text-4xl md:text-5xl font-bold mb-5"}>{this.props.children}</h1>
+					<hr className={"border-2 h-1 rounded"} />
+				</div>
 			</>
 		)
 	}
@@ -13,7 +16,7 @@ class H1 extends React.Component<any, any> {
 class H2 extends React.Component<any, any> {
 	render() {
 		return (
-			<h2 className={"text-4xl font-bold mt-7 text-gray-800"}>{this.props.children}</h2>
+			<h2 className={"text-3xl md:text-4xl font-bold mt-7 text-gray-800"}>{this.props.children}</h2>
 		)
 	}
 }
@@ -21,7 +24,7 @@ class H2 extends React.Component<any, any> {
 class H3 extends React.Component<any, any> {
 	render() {
 		return (
-			<h3 className={"text-2xl font-bold mt-7 text-gray-700"}>{this.props.children}</h3>
+			<h3 className={"text-xl md:text-2xl font-bold mt-7 text-gray-700"}>{this.props.children}</h3>
 		)
 	}
 }

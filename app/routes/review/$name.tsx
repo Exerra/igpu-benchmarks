@@ -1,19 +1,21 @@
 import { LoaderFunction } from "@remix-run/cloudflare";
-import { Parser } from "xml2js"
 import { Link, useLoaderData } from "@remix-run/react";
-import matter from "gray-matter"
 import Markdown from "markdown-to-jsx";
 import fm from "front-matter"
 import React from "react";
 import { mdConfig } from "~/routes/modules/components/markdown";
 import Zoom from "react-medium-image-zoom"
+import ReviewWarning from "~/routes/modules/components/warning";
+import ReviewSection from "~/routes/modules/components/section";
 
 interface Review {
 	attributes: {
 		title: string,
-		platform: "Steam" | "Xbox" | "Epic" | "EA" | "Uplay",
+		platform: ("Steam" | "Xbox" | "Epic" | "EA" | "Uplay")[],
 		icon: string,
 		playableStatus: "runs-great" | "playable" | "unplayable",
+		appid?: string,
+		warning?: string,
 		screenshots: string[]
 	},
 	body: string,
@@ -36,7 +38,8 @@ export default function Index() {
 	let playableStatus = {
 		icon: "",
 		text: "",
-		colour: ""
+		colour: "",
+		bg: ""
 	}
 
 	switch (data.attributes.playableStatus) {
@@ -44,22 +47,25 @@ export default function Index() {
 			playableStatus.icon = "fa-solid fa-circle-check"
 			playableStatus.text = "Runs great!"
 			playableStatus.colour = "text-green-500"
+			playableStatus.bg = "bg-green-100/50"
 			break;
 		case "playable":
 			playableStatus.icon = "fa-solid fa-face-meh"
 			playableStatus.text = "Playable"
 			playableStatus.colour = "text-orange-400"
+			playableStatus.bg = "bg-orange-100/50"
 			break;
 		case "unplayable":
 			playableStatus.icon = "fa-solid fa-circle-xmark"
 			playableStatus.text = "Unplayable"
 			playableStatus.colour = "text-red-400"
+			playableStatus.bg = "bg-red-100/50"
 	}
 
 	console.log( data.attributes )
 	return (
 		<div>
-			<div className={"mx-3 mb-5"}>
+			<div className={"mx-3 mb-5 md:mt-5"}>
 				<nav className="border-gray-200 px-2 sm:px-4 py-2.5 rounded">
 					<div className="container flex flex-wrap justify-between items-center mx-auto">
 						<Link to="/" className="flex items-center">
@@ -73,7 +79,7 @@ export default function Index() {
 			<div className={"md:container md:justify-between items-center mx-3 md:mx-auto md:w-full"}>
 				<div className={"bg-gray-200 p-10 rounded-2xl bg-center bg-cover lg:flex lg:justify-between items-center"} style={{ backgroundImage: 'url("https://cdn.exerra.xyz/svg/iridescent/bg-iridescent-rightside.svg")' }}>
 					<div>
-						<h1 className={"text-5xl font-bold md:text-7xl"}>{data.attributes.title} ({data.attributes.platform})</h1><br />
+						<h1 className={"text-5xl font-bold md:text-7xl"}>{data.attributes.title}</h1><br />
 						<p className={"text-lg"}>Integrated GPU benchmarks for {data.attributes.title}</p>
 					</div>
 					<div className={"hidden lg:inline max-w-xl bg-white p-5 mt-5 lg:mt-0 md:p-5 rounded-2xl shadow-2xl aspect-square"}>
@@ -81,29 +87,44 @@ export default function Index() {
 					</div>
 				</div>
 
-				<main className={""} style={{ lineHeight: "2" }}>
-					<section>
-						<h1 className={"text-5xl mt-10 mb-5"}>Quick info</h1>
-						<div className={"p-10 shadow-2xl rounded-2xl"}>
-							<p className={`${playableStatus.colour} text-2xl`}><i className={playableStatus.icon}></i> {playableStatus.text}</p>
-						</div>
-					</section>
+				{data.attributes.warning == null ? <></> :
+					<ReviewWarning>{data.attributes.warning}</ReviewWarning>
+				}
 
-					<section>
-						<h1 className={"text-5xl mt-10 mb-5"}>Review</h1>
+				<main className={""} style={{ lineHeight: "2" }}>
+					<ReviewSection title={"Quick info"}>
+						<div className={"flex flex-wrap gap-6"}>
+							<div className={`w-full basis-1/1 lg:basis-1/3 p-10 rounded-2xl ${playableStatus.bg} flex justify-between items-center`}>
+								{/*<h2 className="text-xl font-bold text-gray-800 mb-3">How well it runs</h2>*/}
+								<p className={`${playableStatus.colour} text-3xl md:text-4xl font-bold`}>{playableStatus.text}</p>
+								<div className={"inline max-w-xl bg-white p-5 md:p-5 rounded-2xl shadow-2xl aspect-square"}>
+									<p className={`text-4xl md:text-5xl ${playableStatus.colour}`}><i className={playableStatus.icon}></i></p>
+								</div>
+							</div>
+						</div>
+					</ReviewSection>
+
+					<ReviewSection title={"Review"}>
 						<div className={"p-10 shadow-2xl rounded-2xl"}>
 							<Markdown options={mdConfig}>{data.body}</Markdown>
 						</div>
-					</section>
+					</ReviewSection>
 
-					<section>
-						<h1 className={"text-5xl mt-10 mb-5"}>Screenshots</h1>
+					<ReviewSection title={"Screenshots"}>
 						<div className={"p-10 shadow-2xl rounded-2xl flex flex-wrap gap-6 justify-center"}>
 							{data.attributes.screenshots.map(screenshot => (
 								<Zoom><div key={`loaded ${screenshot}`} style={{ /*width: "24rem",*/ aspectRatio: "auto 16 / 9", backgroundImage: `url('${screenshot}')` }} className={"w-80 md:w-96 shadow-2xl rounded-lg overflow-hidden bg-cover basis-1/3"} /></Zoom>
 							))}
 						</div>
-					</section>
+					</ReviewSection>
+
+					{data.attributes.appid == null ? <></> :
+						<ReviewSection title={"Buy the game"}>
+							<div className={"gap-6 justify-center rounded-2xl"}>
+								<iframe src={`https://store.steampowered.com/widget/${data.attributes.appid}/`} frameBorder="0" height={"190"} style={{ border: "0", boxShadow: "none" }} className={"w-full"}></iframe>
+							</div>
+						</ReviewSection>
+					}
 				</main>
 			</div>
 		</div>
