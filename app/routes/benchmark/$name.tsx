@@ -45,7 +45,7 @@ export default function Index() {
 					<div className="container flex flex-wrap justify-between items-center mx-auto">
 						<Link to="/" className="flex items-center">
 							<span
-								className="self-center text-xl font-semibold whitespace-nowrap">Exerra Benchmarks</span>
+								className="self-center text-xl font-semibold whitespace-nowrap">Exerra Bench</span>
 						</Link>
 					</div>
 				</nav>
@@ -55,7 +55,7 @@ export default function Index() {
 				<div className={"bg-gray-200 p-10 rounded-2xl bg-center bg-cover lg:flex lg:justify-between items-center"} style={{ backgroundImage: 'url("https://cdn.exerra.xyz/svg/iridescent/bg-iridescent-rightside.svg")' }}>
 					<div>
 						<h1 className={"text-5xl font-bold md:text-7xl"}>{attributes.title}</h1><br />
-						<p className={"text-lg"}>Integrated GPU benchmarks for <b>{attributes.title}</b></p>
+						<p className={"text-lg"}>GPU benchmarks for <b>{attributes.title}</b></p>
 					</div>
 					<div className={"hidden lg:inline max-w-xl bg-white p-5 mt-5 lg:mt-0 md:p-5 rounded-2xl shadow-2xl aspect-square"}>
 						<div className={"aspect-square bg-center bg-cover rounded-xl p-10"} style={{ backgroundImage: `url("${attributes.icon}")` }} />
