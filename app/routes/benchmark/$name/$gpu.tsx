@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/cloudflare";
+import { LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
 import { Parser } from "xml2js";
 import { S3ObjectList } from "~/types/s3";
 import { useLoaderData } from "@remix-run/react";
@@ -24,6 +24,27 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 	return { objects: objects, prefix: prefix, game: params.name, gpu: params.gpu, benchmark: fm(md).body, gpuAttributes, gameAttributes }
 }
+
+export const meta: MetaFunction = ({ data }): any => {
+	let { objects, gpu, gpuAttributes, gameAttributes }: { objects: S3ObjectList, prefix: string, game: string, gpu: string, benchmark: string, gpuAttributes: GPUAttributes, gameAttributes: GameAttributes } = data
+	let description = `${gpu} benchmarks for ${gameAttributes.title}`
+
+	let metaObj = {
+		title: gameAttributes.title,
+		description: `${gpu} benchmarks for ${gameAttributes.title}`,
+		"twitter:image": gameAttributes.icon,
+		"twitter:card": "summary",
+		"twitter:site": "@Exerra",
+		"twitter:title": gameAttributes.title,
+		"twitter:description": description,
+		"og:image": gameAttributes.icon,
+		"og:url": `https://bench.exerra.xyz`,
+		"og:title": gameAttributes.title,
+		"og:description": description,
+	}
+
+	return metaObj
+};
 
 export default () => {
 	let { objects, prefix, game, gpu, benchmark, gpuAttributes, gameAttributes } = useLoaderData<{ objects: S3ObjectList, prefix: string, game: string, gpu: string, benchmark: string, gpuAttributes: GPUAttributes, gameAttributes: GameAttributes }>()

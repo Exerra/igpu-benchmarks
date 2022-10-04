@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/cloudflare";
+import { LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
 import { Parser } from "xml2js";
 import { S3ObjectList } from "~/types/s3";
 import { useLoaderData } from "@remix-run/react";
@@ -6,6 +6,7 @@ import ReviewSection from "~/modules/components/section";
 import ReactSearchBox from "react-search-box";
 import { gpuSearchFilter } from "~/util/gpuParse";
 import { getS3Objects } from "~/util/s3";
+import { GameAttributes } from "~/types/attributes";
 
 export const loader: LoaderFunction = async ({ params }) => {
 

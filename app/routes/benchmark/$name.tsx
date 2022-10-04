@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/cloudflare";
+import { LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
 import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import Markdown from "markdown-to-jsx";
 import fm from "front-matter"
@@ -8,21 +8,6 @@ import Zoom from "react-medium-image-zoom"
 import ReviewWarning from "~/modules/components/warning";
 import ReviewSection from "~/modules/components/section";
 import { GameAttributes } from "~/types/attributes";
-
-interface Review {
-	attributes: {
-		title: string,
-		platform: ("Steam" | "Xbox" | "Epic" | "EA" | "Uplay")[],
-		icon: string,
-		playableStatus: "runs-great" | "playable" | "unplayable",
-		appid?: string,
-		warning?: string,
-		screenshots: string[]
-	},
-	body: string,
-	bodyBegin: number,
-	frontmatter: string
-}
 
 export const loader: LoaderFunction = async ({ params }) => {
 
@@ -34,6 +19,28 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 	return { attributes: attributes }
 }
+
+export const meta: MetaFunction = ({ data }): any => {
+	let { attributes }: { attributes: GameAttributes } = data
+	let { title, icon } = attributes
+	let description = `GPU benchmarks for ${title}`
+
+	let metaObj = {
+		title: title,
+		description: `GPU benchmarks for ${title}`,
+		"twitter:image": icon,
+		"twitter:card": "summary",
+		"twitter:site": "@Exerra",
+		"twitter:title": title,
+		"twitter:description": description,
+		"og:image": icon,
+		"og:url": `https://bench.exerra.xyz`,
+		"og:title": title,
+		"og:description": description,
+	}
+
+	return metaObj
+};
 
 export default function Index() {
 	let { attributes } = useLoaderData<{ attributes: GameAttributes }>()
