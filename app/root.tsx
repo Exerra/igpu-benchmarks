@@ -28,6 +28,7 @@ export const meta: MetaFunction = () => ({
 	"twitter:card": "summary_large_image",
 	"twitter:image": "https://cdn.exerra.xyz/png/pfp.png",
 	viewport: "width=device-width,initial-scale=1",
+	keywords: "benchmarks, exerra, gpu, igpu, integrated gpu, game"
 });
 
 export default function App() {
