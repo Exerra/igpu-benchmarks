@@ -25,6 +25,7 @@ export const meta: MetaFunction = () => ({
 	"og:type": "website",
 	"og:title": "Exerra Bench",
 	"og:description": "GPU benchmarks for games ranging from indie platformers to AAA shooters",
+	"og:image": "https://cdn.exerra.xyz/png/pfp.png",
 	"twitter:card": "summary_large_image",
 	"twitter:image": "https://cdn.exerra.xyz/png/pfp.png",
 	viewport: "width=device-width,initial-scale=1",
