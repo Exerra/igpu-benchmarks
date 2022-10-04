@@ -888,11 +888,6 @@ video {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-
-  .sm\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
 }
 
 @media (min-width: 768px) {
@@ -1070,11 +1065,6 @@ video {
   .\32xl\:mx-32 {
     margin-left: 8rem;
     margin-right: 8rem;
-  }
-
-  .\32xl\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
   }
 
   .\32xl\:grow-0 {

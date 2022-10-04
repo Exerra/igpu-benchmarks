@@ -9,6 +9,7 @@ import ReviewWarning from "~/modules/components/warning";
 import ReviewSection from "~/modules/components/section";
 import { GameAttributes } from "~/types/attributes";
 import siteinfo from "~/util/siteinfo";
+import Navbar from "~/modules/views/navbar";
 
 export const loader: LoaderFunction = async ({ params }) => {
 
@@ -48,16 +49,7 @@ export default function Index() {
 
 	return (
 		<div>
-			<div className={"mx-3 mb-5 md:mt-5"}>
-				<nav className="border-gray-200 px-2 sm:px-4 py-2.5 rounded">
-					<div className="container flex flex-wrap justify-between items-center mx-auto">
-						<Link to="/" className="flex items-center">
-							<span
-								className="self-center text-xl font-semibold whitespace-nowrap">Exerra {siteinfo.title}</span>
-						</Link>
-					</div>
-				</nav>
-			</div>
+			<Navbar />
 
 			<div className={"md:container md:justify-between items-center mx-3 md:mx-auto md:w-full"}>
 				<div className={"bg-gray-200 p-10 rounded-2xl bg-center bg-cover lg:flex lg:justify-between items-center"} style={{ backgroundImage: 'url("https://cdn.exerra.xyz/svg/iridescent/bg-iridescent-rightside.svg")' }}>
