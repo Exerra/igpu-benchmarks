@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "@remix-run/react";
 import ReactSearchBox from "react-search-box";
 import { S3ObjectList } from "~/types/s3";
 import { getS3Objects } from "~/util/s3";
+import siteinfo from "~/util/siteinfo";
 
 export const loader: LoaderFunction = async () => {
 
@@ -39,14 +40,14 @@ export default function Index() {
 					<div className="container flex flex-wrap justify-between items-center mx-auto">
 						<Link to="/" className="flex items-center">
 							<span
-								className="self-center text-xl font-semibold whitespace-nowrap">Exerra Bench</span>
+								className="self-center text-xl font-semibold whitespace-nowrap">Exerra {siteinfo.title}</span>
 						</Link>
 					</div>
 				</nav>
 
 				<div className={"container justify-between items-center mx-auto w-full h-screen"}>
 					<div className={"justify-center md:justify-start my-36 md:my-36 content-center"}>
-						<h1 className={"font-bold text-6xl lg:text-9xl text-center md:text-left text-black"}><span className={"text-gray-700"}>Exerra</span> Bench<span className={"text-gray-700"}>.</span></h1><br/>
+						<h1 className={"font-bold text-6xl lg:text-9xl text-center md:text-left text-black"}><span className={"text-gray-700"}>Exerra</span> {siteinfo.title}<span className={"text-gray-700"}>.</span></h1><br/>
 						<h3 className={"font-bold text-2xl lg:text-3xl text-center mx-3 md:text-left"}>GPU benchmarks for games</h3><br/><br/><br/>
 
 						<div className={"mx-3 block"}>
@@ -71,7 +72,7 @@ export default function Index() {
 				<div className={"md:max-w-lg"}>
 					<h1 className={"text-4xl md:text-6xl"}>One system fits all</h1><br/>
 					<p>
-						Exerra Bench is focused on delivering quality benchmarks for integrated graphics, but the website and backend has been made in a way to support every GPU possible.
+						Exerra {siteinfo.title} is focused on delivering quality benchmarks for integrated graphics, but the website and backend has been made in a way to support every GPU possible.
 					</p>
 				</div>
 				{/* TODO: Create a graph for igpu to dgpu ratio when there are more than 10 benchmarks

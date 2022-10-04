@@ -8,6 +8,7 @@ import Zoom from "react-medium-image-zoom"
 import ReviewWarning from "~/modules/components/warning";
 import ReviewSection from "~/modules/components/section";
 import { GameAttributes } from "~/types/attributes";
+import siteinfo from "~/util/siteinfo";
 
 export const loader: LoaderFunction = async ({ params }) => {
 
@@ -52,7 +53,7 @@ export default function Index() {
 					<div className="container flex flex-wrap justify-between items-center mx-auto">
 						<Link to="/" className="flex items-center">
 							<span
-								className="self-center text-xl font-semibold whitespace-nowrap">Exerra Bench</span>
+								className="self-center text-xl font-semibold whitespace-nowrap">Exerra {siteinfo.title}</span>
 						</Link>
 					</div>
 				</nav>

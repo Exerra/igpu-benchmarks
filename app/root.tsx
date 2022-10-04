@@ -9,27 +9,28 @@ import {
 } from "@remix-run/react";
 
 import styles from "./styles/app.css"
+import siteinfo from "~/util/siteinfo";
 
 export function links() {
 	return [ { rel: "stylesheet", href: styles }, {
 		rel: "icon",
-		href: "https://cdn.exerra.xyz/png/pfp.png",
+		href: siteinfo.image,
 		type: "image/png",
 	} ]
 }
 
 export const meta: MetaFunction = () => ({
 	charset: "utf-8",
-	title: "Exerra Bench",
-	description: "GPU benchmarks for games ranging from indie platformers to AAA shooters",
+	title: `Exerra ${siteinfo.title}`,
+	description: siteinfo.description,
 	"og:type": "website",
-	"og:title": "Exerra Bench",
-	"og:description": "GPU benchmarks for games ranging from indie platformers to AAA shooters",
-	"og:image": "https://cdn.exerra.xyz/png/pfp.png",
+	"og:title": `Exerra ${siteinfo.title}`,
+	"og:description": siteinfo.description,
+	"og:image": siteinfo.image,
 	"twitter:card": "summary_large_image",
-	"twitter:image": "https://cdn.exerra.xyz/png/pfp.png",
+	"twitter:image": siteinfo.image,
 	viewport: "width=device-width,initial-scale=1",
-	keywords: "benchmarks, exerra, gpu, igpu, integrated gpu, game"
+	keywords: siteinfo.keywords
 });
 
 export default function App() {
