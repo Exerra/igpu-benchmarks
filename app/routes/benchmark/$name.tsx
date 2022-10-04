@@ -62,7 +62,7 @@ export default function Index() {
 					</div>
 				</div>
 
-				<main className={""} style={{ lineHeight: "2" }}>
+				<main className={""}>
 
 					<Outlet />
 

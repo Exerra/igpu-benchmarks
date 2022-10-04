@@ -74,7 +74,7 @@ export default () => {
 	}
 
 	return (
-		<div>
+		<div className={"leading-relaxed"}>
 			<div className={"flex flex-wrap gap-6 mt-10"}>
 				{gameAttributes.warning == null ? <></> :
 					<ReviewWarning>{gameAttributes.warning}</ReviewWarning>
