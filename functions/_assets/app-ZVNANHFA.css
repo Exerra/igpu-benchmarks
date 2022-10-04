@@ -945,11 +945,6 @@ video {
     margin-right: 1.25rem;
   }
 
-  .md\:mx-14 {
-    margin-left: 3.5rem;
-    margin-right: 3.5rem;
-  }
-
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -1040,16 +1035,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .lg\:mx-14 {
-    margin-left: 3.5rem;
-    margin-right: 3.5rem;
-  }
-
   .lg\:mt-0 {
     margin-top: 0px;
   }
@@ -1081,29 +1066,7 @@ video {
   }
 }
 
-@media (min-width: 1280px) {
-  .xl\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .xl\:mx-14 {
-    margin-left: 3.5rem;
-    margin-right: 3.5rem;
-  }
-}
-
 @media (min-width: 1536px) {
-  .\32xl\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .\32xl\:mx-32 {
-    margin-left: 8rem;
-    margin-right: 8rem;
-  }
-
   .\32xl\:grow-0 {
     flex-grow: 0;
   }

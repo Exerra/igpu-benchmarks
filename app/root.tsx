@@ -69,9 +69,7 @@ function Document( { children, title } ) {
 function Layout( { children } ) {
 	return (
 		<div>
-			<div>
-				<div className={"bg-body font-poppins"}>{children}</div>
-			</div>
+			<div className={"bg-body font-poppins 2xl:mx-32"}>{children}</div>
 			<footer className={"p-10"}>
 				<p className={"text-center"}>&copy; Exerra</p>
 			</footer>
