@@ -3,10 +3,10 @@ import { Link, useLoaderData } from "@remix-run/react";
 import Markdown from "markdown-to-jsx";
 import fm from "front-matter"
 import React from "react";
-import { mdConfig } from "~/routes/modules/components/markdown";
+import { mdConfig } from "~/modules/components/markdown";
 import Zoom from "react-medium-image-zoom"
-import ReviewWarning from "~/routes/modules/components/warning";
-import ReviewSection from "~/routes/modules/components/section";
+import ReviewWarning from "~/modules/components/warning";
+import ReviewSection from "~/modules/components/section";
 
 interface Review {
 	attributes: {
@@ -23,11 +23,26 @@ interface Review {
 	frontmatter: string
 }
 
+interface Attributes {
+	title: string,
+	icon: string,
+	playableStatus: "runs-great" | "playable" | "unplayable",
+	platforms: {
+		tested: ("Steam" | "Xbox" | "Epic" | "EA" | "Uplay")[],
+		appid: number
+	},
+	screenshots: string[]
+}
+
 export const loader: LoaderFunction = async ({ params }) => {
 
 	let prefix = "reviews"
 
 	let md = await (await fetch( `https://s3.eu-west-3.amazonaws.com/exerra-igpu-benchmark/${prefix}/${params.name}.md` )).text()
+
+	let attributes = await (await fetch(`https://s3.eu-west-3.amazonaws.com/exerra-igpu-benchmark/${prefix}/${params.name}/attributes.json`)).json()
+
+	console.log(attributes)
 
 	return fm(md)
 }
@@ -62,7 +77,6 @@ export default function Index() {
 			playableStatus.bg = "bg-red-100/50"
 	}
 
-	console.log( data.attributes )
 	return (
 		<div>
 			<div className={"mx-3 mb-5 md:mt-5"}>

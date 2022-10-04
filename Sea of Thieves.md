@@ -12,10 +12,6 @@ screenshots:
 - "https://cdn.mos.cms.futurecdn.net/Pj2KVuACbxTmonwk34VGoe.jpg"
 ---
 
-# Brief
-
-On 900p and lowest settings the game runs at around 20-30fps and sometimes stutters.
-
 # Minimum requirements
 
 **OS**: Windows 10 Anniversary

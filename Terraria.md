@@ -10,10 +10,6 @@ screenshots:
     - "https://cdn.mos.cms.futurecdn.net/Pj2KVuACbxTmonwk34VGoe.jpg"
 ---
 
-# Brief
-
-On 1920x1080 resolution the game runs perfectly fine.
-
 # Minimum requirements
 
 **OS**: Windows Xp, Vista, 7, 8/8.1, 10
