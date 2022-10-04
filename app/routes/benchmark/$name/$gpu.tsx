@@ -80,7 +80,7 @@ export default () => {
 					<ReviewWarning>{gameAttributes.warning}</ReviewWarning>
 				}
 
-				<div className={`w-full basis-1/1 lg:basis-1/3 p-10 rounded-2xl ${playableStatus.bg} flex justify-between items-center grow 2xl:grow-0`}>
+				<div className={`w-full basis-1/1 ${gameAttributes.warning == null ? "" : "lg:basis-1/3"} p-10 rounded-2xl ${playableStatus.bg} flex justify-between items-center grow 2xl:grow-0`}>
 					{/*<h2 className="text-xl font-bold text-gray-800 mb-3">How well it runs</h2>*/}
 					<p className={`${playableStatus.colour} text-3xl md:text-4xl font-bold`}>{playableStatus.text}</p>
 					<div className={"inline max-w-xl bg-white p-5 md:p-5 rounded-2xl shadow-2xl aspect-square"}>
