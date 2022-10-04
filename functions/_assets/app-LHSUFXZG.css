@@ -995,14 +995,6 @@ video {
     padding-right: 5rem;
   }
 
-  .md\:pt-5 {
-    padding-top: 1.25rem;
-  }
-
-  .md\:pt-7 {
-    padding-top: 1.75rem;
-  }
-
   .md\:text-left {
     text-align: left;
   }
