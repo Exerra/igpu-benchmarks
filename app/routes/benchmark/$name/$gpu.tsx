@@ -38,7 +38,7 @@ export const meta: MetaFunction = ({ data }): any => {
 		"twitter:title": gameAttributes.title,
 		"twitter:description": description,
 		"og:image": gameAttributes.icon,
-		"og:url": `https://bench.exerra.xyz`,
+		"og:url": `https://benchmarks.exerra.xyz/${gameAttributes.title}/${gpu}`,
 		"og:title": gameAttributes.title,
 		"og:description": description,
 	}
